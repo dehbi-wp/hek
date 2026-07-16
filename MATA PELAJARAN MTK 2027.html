@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEVICE LOCKED</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;user-select:none;}
+body{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+  color:white;
+  font-family:Arial;
+  transition: background 0.3s;
+}
+/* EFEK LAMPU NYALA SENDIRI */
+.blink{animation: nyala 0.7s infinite;}
+@keyframes nyala{
+  0%{background:#000;}
+  30%{background:red;}
+  60%{background:white; color:black;}
+  100%{background:red;}
+}
+.box{text-align:center; z-index:99; padding:20px;}
+h1{font-size:26px; color:red; margin-bottom:10px;}
+.info{font-size:14px; color:#aaa; margin:25px 0;}
+.note{background:#222; padding:12px; border-radius:8px; font-size:13px;}
+button{
+  margin-top:20px;
+  padding:12px 25px;
+  background:#900;
+  color:white;
+  border:none;
+  border-radius:5px;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+</head>
+<body id="layar">
+
+<div class="box">
+  <h1>💀 DEVICE LOCKED 💀</h1>
+  <p class="info">Contact Admin for Unlock</p>
+
+  <div class="note">
+    <p>Aplikasi disematkan</p><br>
+    <p>Untuk melepas sematan aplikasi, sentuh<br>
+    dan tahan tombol Kembali secara bersamaan.</p>
+  </div>
+
+  <button onclick="bukaPrank()">🔓 TRY UNLOCK</button>
+</div>
+
+<!-- SUARA -->
+<audio id="alarm">
+<source src="https://actions.google.com/sounds/v1/alarms/emergency_broadcast.ogg" type="audio/ogg">
+
+
+<audio id="suaraidiot" loop>
+<source src="https://www.myinstants.com/media/sounds/you-are-an-idiot.mp3" type="audio/mpeg">
+
+
+
+<script>
+// ✨ LAMPU NYALA SENDIRI SETELAH 2 DETIK
+setTimeout(()=>{
+  document.getElementById("layar").classList.add("blink");
+}, 2000);
+
+function bukaPrank(){
+  const alarm = document.getElementById("alarm");
+  const suaraidiot = document.getElementById("suaraidiot");
+
+  alarm.pause();
+  alarm.currentTime = 0;
+
+  // Mulai putar berulang
+  suaraidiot.currentTime = 0;
+  suaraidiot.play().catch(err => {
+    alert("Izinkan pemutaran suara di pengaturan peramban terlebih dahulu");
+  });
+
+  alert("🤣 KETIPU! YOU ARE AN IDIOT 😈\nBOCIL KONTOL 😹");
+  document.getElementById("layar").classList.remove("blink");
+}
+</script>
+
+</body>
+</html>
